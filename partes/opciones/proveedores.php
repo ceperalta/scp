@@ -1,3 +1,4 @@
+<?  session_start(); ?>
 <html>
 <head>
 <script type="text/javascript" src="../../librerias/jquery-1.3.2.min.js"></script>

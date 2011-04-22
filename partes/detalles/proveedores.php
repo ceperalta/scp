@@ -1,3 +1,4 @@
+<?  session_start(); ?>
 <?
 	include("../../configuracion/configuracion.php");
 	include("../../funciones/funciones.php");
@@ -21,10 +22,10 @@
 		$sql = "select * from listpre1 where codpro='".$_GET[ver_prod_cod]."' order by titulo asc";
 		$res = ejecutar_sql($sql);
 		
-		echo "<b>Productos de ".$_GET[prov]."</b><br/>Nuevo (detalle,precio unitario,descuento,enpaque):<form target='_self' method='post'><input type='hidden' name='codpro' value='".$_GET[ver_prod_cod]."'/><input type='text' name='nuevo_reg' size='100'/><input type='submit' value='agregar'/></form>";
+		echo "<b>Productos de ".$_GET[prov]."</b><br/>Nuevo (detalle,precio unitario,descuento,empaque):<form target='_self' method='post'><input type='hidden' name='codpro' value='".$_GET[ver_prod_cod]."'/><input type='text' name='nuevo_reg' size='100'/><input type='submit' value='agregar'/></form>";
 		echo "<center><div style='height:180px; width:750px; overflow:scroll;'>
 			<table>
-			<tr bgcolor='#67C6E4'><th></th><th>Detalle</th><th>Precio unitario</th><th>Descuento</th><th>Enpaque</th></tr>
+			<tr bgcolor='#67C6E4'><th></th><th>Detalle</th><th>Precio unitario</th><th>Descuento</th><th>Empaque</th></tr>
 		";
 		
 		$cont_color = 0;

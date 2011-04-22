@@ -9,6 +9,7 @@ if(sizeof($_SESSION[configuracion])==0)
 		$_SESSION[configuracion][$reg[constante]]=$reg[valor];
 	}
 	
+	error_log("sesión conf:" . implode("--",array_keys($_SESSION[configuracion])));
 	error_log("sesión conf:" . implode("--",$_SESSION[configuracion]));
 }
 

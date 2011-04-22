@@ -1,3 +1,4 @@
+<?  session_start(); ?>
 <?
 	include("../../configuracion/configuracion.php");
 	include("../../funciones/funciones.php");
@@ -29,8 +30,8 @@
 	echo "</table>";
 	
 ?>
-<tr bg
-<script>
+
+<script language="javascript">
 	function detalle(cod)
 	{
 		parent.detalle.location.href = "../detalles/proveedores.php?cod=" + cod;
