@@ -1,3 +1,4 @@
+<?  session_start(); ?>
 <html>
 <head>
 <script type="text/javascript" src="../../librerias/jquery-1.3.2.min.js"></script>
@@ -52,9 +53,10 @@
 
 <body>
 <?
+
 	include("../../configuracion/configuracion.php");
 	include("../../funciones/funciones.php");
-	
+
 	if($_GET[s]=="vacio")
 	{
 		echo "clientes :: opciones";

@@ -1,6 +1,8 @@
-<?
-	include("configuracion/configuracion.php");
-	include("funciones/funciones.php");
+<?  session_start();
+
+	include_once("configuracion/configuracion.php");
+	include_once("funciones/funciones.php");
+
 	
 ?>
 
@@ -17,3 +19,6 @@
     </frameset>
 
 </frameset><noframes></noframes>
+
+
+
