@@ -234,7 +234,7 @@ DROP TABLE IF EXISTS `listpre1`;
 SET @saved_cs_client     = @@character_set_client;
 SET character_set_client = utf8;
 CREATE TABLE `listpre1` (
-  `id` int(11) NOT NULL auto_increment,
+  `idahora` int(11) NOT NULL auto_increment,
   `CODPRO` varchar(4) NOT NULL default '',
   `TITULO` varchar(40) default NULL,
   `DETALLE` varchar(55) default NULL,
@@ -242,7 +242,7 @@ CREATE TABLE `listpre1` (
   `COLUM3` double default NULL,
   `IMPUESTO` double default NULL,
   `DESCUENTO` double default NULL,
-  PRIMARY KEY  (`id`)
+  PRIMARY KEY  (`idahora`)
 ) ENGINE=MyISAM AUTO_INCREMENT=3680 DEFAULT CHARSET=latin1;
 SET character_set_client = @saved_cs_client;
 
@@ -434,4 +434,4 @@ SET character_set_client = @saved_cs_client;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2011-04-22 17:21:24
+-- Dump completed on 2011-04-22 19:20:55
