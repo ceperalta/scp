@@ -2,6 +2,7 @@
 include("../configuracion/configuracion.php");
 include("../funciones/funciones.php");
 
+
 $pag_actual = $_POST[pag_actual];
 
 $fechainicial = $_POST[fechainicial];

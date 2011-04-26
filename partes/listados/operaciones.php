@@ -1,3 +1,4 @@
+<?  session_start(); ?>
 <html><body>
 <div id="listado">
 </div>
