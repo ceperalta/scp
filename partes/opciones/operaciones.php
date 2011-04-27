@@ -21,7 +21,7 @@ var pg = -1;
 include("../../configuracion/configuracion.php");
 include("../../funciones/funciones.php");
 
-echo "var tam_pag=".TAMANIO_PAGINA_OPERACIONES.";";
+echo "var tam_pag=".$_SESSION[configuracion]["TAMANIO_PAGINA_OPERACIONES"].";";
 ?>
 $(document).ready(
 	function(){

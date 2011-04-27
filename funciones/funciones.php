@@ -13,6 +13,7 @@ if(sizeof($_SESSION[configuracion])==0)
 	error_log("sesión conf:" . implode("--",$_SESSION[configuracion]));
 }
 
+
 function ejecutar_sql($sql)
 {
 	error_log("ejecutar_sql > ".$sql);

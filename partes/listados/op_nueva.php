@@ -33,7 +33,7 @@
 
 		while($reg_tmp = mysql_fetch_array($res_tmp))
 		{
-			$iva_acu += ($reg_tmp[IMPORTE]*IVA)/100;
+			$iva_acu += ($reg_tmp[IMPORTE]*$_SESSION[configuracion][IVA])/100;
 			$subtotal_acu += $reg_tmp[IMPORTE]; 
 		
 			$sql = "insert into pedi002_tmp (CANTIDAD, ENPAQUE,DETALLE,UNITARIO,DESCUENTO,IMPORTE) values (".$reg_tmp[CANTIDAD].",".$reg_tmp[ENPAQUE].",'".$reg_tmp['DETALLE']."',".$reg_tmp[UNITARIO].",".($reg_tmp[DESCUENTO]?$reg_tmp[DESCUENTO]:0).",".$reg_tmp[IMPORTE].")";
@@ -75,11 +75,16 @@ $.datepick.setDefaults($.datepick.regional['es']);
 </script>
 
 <form id="formu" name="formu">
+
 <table>
 <?
 	echo "<input type='hidden' id='codop' name='codop' value='".$nuevo_id."'/>";
+	
 	if(isset($_GET[idoper]))
 		echo "<input type='hidden' id='esmod' name='esmod' value='s'/>";
+	else
+		echo "<input type='hidden' id='esmod' name='esmod' value='n'/>";
+	
 	echo "<tr><td>Fecha</td><td><input type='text' size='10' maxlength='10' id='fechaop' name='fechaop' value='".$fecha_lista."'/></td></tr>";
 	
 ?>
@@ -195,7 +200,7 @@ $.datepick.setDefaults($.datepick.regional['es']);
 	
 			function(datos)
 			{
-				iva_var += parseFloat(datos)*0.<? echo IVA;?>;
+				iva_var += parseFloat(datos)*0.<? echo $_SESSION[configuracion][IVA];?>;
 				subtotal_var += parseFloat(datos);
 			
 				total_var = (iva_var+subtotal_var);

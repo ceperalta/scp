@@ -56,7 +56,7 @@ Notas: ".$reg[notas_listas]."
 
 	$salida .= "\n===================================================================\n";
 	$salida .= "(a) Subtotal - Sumatoria de importes = $".str_replace(".",",",$sum_importes)."\n";
-	$iva = ($sum_importes * IVA)/100;
+	$iva = ($sum_importes * $_SESSION[configuracion][IVA])/100;
 	$salida .= ">> IVA 21% sobre (a) = $".str_replace(".",",",$iva)."\n";
 	$salida .= ">> Total a pagar - Sumatoria items anteriores = $".str_replace(".",",",$iva+$sum_importes)."\n";
 	$salida .= ">> Total de bultos - Sumatoria de (1) = ".str_replace(".",",",$sum_bultos)."\n";

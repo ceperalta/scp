@@ -64,7 +64,9 @@ $reg = mysql_fetch_array($res);
 $total = $reg[total];
 
 
-$sql = "select operacion,fechaop,CLIENTE,PROVEEDOR,flete,FECHAFL, pg as pgs from pediuno, clientes, proveedores where pediuno.CODCLI = clientes.CODCLI and proveedores.CODPRO=pediuno.CODPRO ".$arma_where." order by OPERACION desc limit ".$pag_actual.",".TAMANIO_PAGINA_OPERACIONES;
+$sql = "select operacion,fechaop,CLIENTE,PROVEEDOR,flete,FECHAFL, pg as pgs from pediuno, clientes, proveedores where pediuno.CODCLI = clientes.CODCLI and proveedores.CODPRO=pediuno.CODPRO ".$arma_where." order by OPERACION desc limit ".$pag_actual.",".$_SESSION[configuracion][TAMANIO_PAGINA_OPERACIONES];
+
+
 
 
 
