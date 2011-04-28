@@ -66,6 +66,8 @@ else
 	function cargaOperaciones()
 	{
 		parent.document.getElementById('listado_detalle').rows = '47%,53%';
+		parent.document.getElementById('frameset_principal').cols = '20%,80%';
+		
 		parent.listado.location.href = "listados/operaciones.php";
 		parent.opciones.location.href = "opciones/operaciones.php";
 		parent.detalle.location.href = "detalles/operaciones.php?s=vacio";

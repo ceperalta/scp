@@ -69,9 +69,15 @@ function traer_pagina_actual()
 	  			     
 			  		 var aP = data.split("####");
 					 total =  aP[0];
-					 pinta_nros_paginacion();
-					 parent.listado.document.getElementById('listado').innerHTML = aP[1];
-					 
+					 if(total!=-1)
+					 {
+					 	pinta_nros_paginacion();
+					 	parent.listado.document.getElementById('listado').innerHTML = aP[1];
+					 }
+					 else
+					 {
+					 	parent.listado.document.getElementById('listado').innerHTML = "Sin registros en la base de datos; o según el filtro actual.";
+					 }
 					 puede_paginar = true;
  		      } 
 	 );			

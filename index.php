@@ -6,7 +6,7 @@
 	
 ?>
 
-<frameset cols="17%,73%">
+<frameset cols="20%,73%" id="frameset_principal">
 	
     <frameset rows="45%,55%" id="menu_opciones">
 		<frame src="partes/menu.php?s=Clientes" name="menu" id="menu" >
