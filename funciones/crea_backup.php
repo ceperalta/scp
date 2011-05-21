@@ -10,19 +10,22 @@ include("../funciones/funciones.php");
 	$a = split("\n",$theData);
 	$version = trim($a[3]);
 
-	$hora_menos_uno = date('H')-1;
+	$hora_menos_uno = date('H');
 	$minutos = date('i');
-	$fecha_hora = date('j-n-y_').$hora_menos_uno."_".$minutos."hs";
+	$segundos = date('s');
+	$fecha_hora = date('j-n-y_').$hora_menos_uno.":".$minutos.":".$segundos."hs";
 
 $nombre_backup = "scp_v".$version."_".$fecha_hora;
 
-$path_y_nombre_sql = "C:\\xampp\\htdocs\\scp\\temporal\\".$nombre_backup.".sql";
+$path_y_nombre_sql = $_SESSION[configuracion][PATH_BASE_FS]."\\temporal\\".$nombre_backup.".sql";
 
-exec("C:\\xampp\\mysql\\bin\\mysqldump.exe scp --user=root > " . $path_y_nombre_sql);
+$cmd = $_SESSION[configuracion]PATH_BASE_BIN_MYSQL]."\\mysqldump.exe scp --user=root > " . $path_y_nombre_sql;
+echo $cmd;
+exec($cmd);
 
 		
 $zip = new ZipArchive();
-$filename = "C:\\xampp\\htdocs\\scp\\temporal\\".$nombre_backup.".zip";
+$filename = $_SESSION[configuracion][PATH_BASE_FS]."\\temporal\\".$nombre_backup.".zip";
 
 if ($zip->open($filename, ZIPARCHIVE::CREATE)!==TRUE) {
    exit("No se puede abrir el archivo a comprimir <$filename>\n");

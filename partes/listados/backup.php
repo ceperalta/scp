@@ -18,7 +18,7 @@
 
 <b>Último backup creado:&nbsp;</b><span id='txt_realizado' style="color:#990000"><? echo $reg[realizado];?></span>
 <center>
-<i>Se creará el archivo .zip en <br /><b><? echo CARPETA_DE_BACKUP; ?></b></i><br />
+<i>Se creará el archivo .zip en <br /><b><? echo $_SESSION[configuracion][CARPETA_DE_BACKUP]; ?></b></i><br />
 <form target="_self" method="post" id='form_bck'>
 <input type="hidden" name="a" value="crear_backup" />
 <input type="submit" value='crear backup'/>
