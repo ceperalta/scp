@@ -3,11 +3,13 @@
 	include("../../funciones/funciones.php");
 ?>
 
+
+
 <html>
 <body>
 <head>
 <script type="text/javascript" src="../../librerias/jquery-1.3.2.min.js"></script>
-</head>
+</head>  
 
 <?
 	$sql = "select realizado from backup_log where id=1";

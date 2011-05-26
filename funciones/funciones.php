@@ -9,6 +9,21 @@ if(sizeof($_SESSION[configuracion])==0)
 		$_SESSION[configuracion][$reg[constante]]=$reg[valor];
 	}
 	
+	//Tomar el último tag 
+	$cmd = "e:";
+	exec($cmd,$salida);
+
+	$cmd = "cd ".$_SESSION[configuracion][PATH_BASE_FS];
+	exec($cmd,$salida);
+	
+	$cmd = '"c:\\Program Files\\Git\\bin\\git.exe" tag';
+	exec($cmd,$salida);
+	$ultimo_tag = $salida[sizeof($salida)-1];
+	
+	$_SESSION[configuracion][ULTIMO_TAG]=$ultimo_tag;
+	//Fin tomar el último tag
+	
+	
 	error_log("sesión conf:" . implode("--",array_keys($_SESSION[configuracion])));
 	error_log("sesión conf:" . implode("--",$_SESSION[configuracion]));
 }

@@ -3,14 +3,8 @@
 	include("../configuracion/configuracion.php");
 	include("../funciones/funciones.php");
 
-	$myFile = ".svn/entries";
-	$fh = fopen($myFile, 'r');
-	$theData = fread($fh, filesize($myFile));
-	fclose($fh);
-	$a = split("\n",$theData);
-	$version = trim($a[3]);
-
-	echo "SCP <i>Versión ".$version."</i><hr>";
+	echo "SCP  (".$_SESSION[configuracion][ULTIMO_TAG].")";
+	echo "<hr/>";
 ?>
 
 

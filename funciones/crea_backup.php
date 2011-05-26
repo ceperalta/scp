@@ -3,12 +3,13 @@ include("../configuracion/configuracion.php");
 include("../funciones/funciones.php");
 
 
-	$myFile = ".svn/entries";
-	$fh = fopen($myFile, 'r');
-	$theData = fread($fh, filesize($myFile));
-	fclose($fh);
-	$a = split("\n",$theData);
-	$version = trim($a[3]);
+	$dirTags = $_SESSION[configuracion][PATH_BASE_FS]."\\.git\\refs\\tags";
+	exec("dir ".$dirTags,$salida);
+	echo implode("<>",$salida);
+
+	exit();
+
+	//$version = trim($a[3]);
 
 	$hora_menos_uno = date('H');
 	$minutos = date('i');
