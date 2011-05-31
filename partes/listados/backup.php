@@ -35,7 +35,8 @@
 
 <b>Último backup restaurado:&nbsp;</b><span id='txt_restaurado' style="color:#990000"></span>
 <form target="_self" method="post" id='form_bck_restaura' enctype="multipart/form-data">
-<b>Restaurar datos desde backup:&nbsp;</b><input type="file" name="archivo_bckp">
+<b>Restaurar datos desde backup:&nbsp;</b><input type="file" name="archivo_bckp" style="width:800px;">
+<br/>
 <input type="hidden" name="a" value="restaura_backup" />
 <input type="submit" value='restaurar'/>
 <br />
