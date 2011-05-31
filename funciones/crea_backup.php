@@ -3,13 +3,6 @@ include("../configuracion/configuracion.php");
 include("../funciones/funciones.php");
 
 
-	$dirTags = $_SESSION[configuracion][PATH_BASE_FS]."\\.git\\refs\\tags";
-	exec("dir ".$dirTags,$salida);
-	echo implode("<>",$salida);
-
-	exit();
-
-	//$version = trim($a[3]);
 
 	$hora_menos_uno = date('H');
 	$minutos = date('i');
