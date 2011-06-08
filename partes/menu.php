@@ -3,7 +3,7 @@
 	include("../configuracion/configuracion.php");
 	include("../funciones/funciones.php");
 
-	echo "SCP-Desarrollo  (".$_SESSION[configuracion][ULTIMO_TAG].")";
+	echo VERSION_TITULO;
 	echo "<hr/>";
 ?>
 
