@@ -1,8 +1,0 @@
-<?
-	
-	define(NOMBRE_BD,"scp");
-	define(USUARIO_BD,"root");
-	define(CLAVE_BD,"");
-	define(SERVIDOR_BD,"localhost");
-	
-?>
