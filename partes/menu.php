@@ -3,7 +3,7 @@
 	include("../configuracion/configuracion.php");
 	include("../funciones/funciones.php");
 
-	echo VERSION_TITULO;
+	echo $_SESSION[configuracion][VERSION];
 	echo "<hr/>";
 ?>
 
