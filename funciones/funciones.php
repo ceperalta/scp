@@ -9,7 +9,7 @@ if(sizeof($_SESSION[configuracion])==0)
 		$_SESSION[configuracion][$reg[constante]]=$reg[valor];
 	}
 	
-	$f = "e:\\xampp\\htdocs\\scp\\partes\\version.txt";
+	$f = "c:\\xampp\\htdocs\\scp\\partes\\version.txt";
 	$fp = fopen($f, "r");
 	$version = trim(fread($fp, filesize($f)));
 
