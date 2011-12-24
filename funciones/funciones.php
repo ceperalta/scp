@@ -27,6 +27,18 @@ function ejecutar_sql($sql)
 	return $res;
 }
 
+function ejecutar_sql2($sql)
+{
+	error_log("ejecutar_sql > ".$sql);
+
+	$con = mysql_connect(SERVIDOR_BD2,USUARIO_BD2,CLAVE_BD2);
+	mysql_select_db(NOMBRE_BD2);
+	$res = mysql_query($sql,$con);
+	mysql_close($con);
+	
+	return $res;
+}
+
 ?>
 
 

@@ -1,0 +1,1 @@
+PHP:- execution max = 0- errores sin deprecated ni notice
