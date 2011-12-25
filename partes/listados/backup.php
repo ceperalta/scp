@@ -12,17 +12,17 @@
 </head>  
 
 <?
-	$sql = "select realizado from backup_log where id=1";
-	$res = ejecutar_sql($sql);
-	$reg = mysql_fetch_array($res);
+	$sql2 = "select realizado from realizados where id=1";
+	$res2 = ejecutar_sql($sql2);
+	$reg2 = mysql_fetch_array($res2);
 ?>
 
 
-<b>Último backup creado:&nbsp;</b><span id='txt_realizado' style="color:#990000"><? echo $reg[realizado];?></span>
+<b>Último backup creado:&nbsp;</b><span id='txt_realizado' style="color:#990000"><? echo $reg2[realizado];?></span>
 <center>
 <i>Se creará el archivo .zip en <br /><b><? echo $_SESSION[configuracion][CARPETA_DE_BACKUP]; ?></b></i><br />
 <form target="_self" method="post" id='form_bck'>
-<input type="hidden" name="a" value="crear_backup" />
+<input type="hidden" name="crea" value="crear_backup" />
 <input type="submit" value='crear backup'/>
 <br />
 <br />
@@ -33,7 +33,13 @@
 </center>
 <hr>
 
-<b>Último backup restaurado:&nbsp;</b><span id='txt_restaurado' style="color:#990000"></span>
+<?
+	$sql = "select restaurado from restaurados where id=1";
+	$res = ejecutar_sql($sql);
+	$reg = mysql_fetch_array($res);
+?>
+
+<b>Último backup restaurado:&nbsp;</b><span id='txt_restaurado' style="color:#990000"><? echo $reg[restaurado];?></span>
 <form target="_self" method="post" id='form_bck_restaura' enctype="multipart/form-data">
 <b>Restaurar datos desde backup:&nbsp;</b><input type="file" name="archivo_bckp" style="width:800px;">
 <br/>
@@ -52,7 +58,7 @@
 
 
 <?	
-	if($_POST[a]=='crear_backup')
+	if($_POST[crea]=='crear_backup')
 	{
 		echo '
 			<script language="javascript">
@@ -62,6 +68,8 @@
 			  		function(data){
 					 	$("#cargador").hide();	
 						$("#txt_aviso").text("Backup " + data + " creado.");
+						
+						
 						$("#txt_realizado").text(data);
 						
  		      	});			
@@ -76,7 +84,7 @@
 	if($_POST[a]=='restaura_backup')
 	{
 	
-		$target_path = "../../temporal/";
+		$target_path =  $_SESSION[configuracion][PATH_BASE_FS]."\\temporal\\";
 
 		$archivo = basename( $_FILES['archivo_bckp']['name']);
 		$target_path = $target_path . $archivo ; 
