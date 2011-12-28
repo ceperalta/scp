@@ -3,7 +3,7 @@
 	include("../configuracion/configuracion.php");
 	include("../funciones/funciones.php");
 
-	echo $_SESSION[configuracion][VERSION];
+	echo "SCP - (v".$_SESSION[configuracion][VERSION].")";
 	echo "<hr/>";
 ?>
 

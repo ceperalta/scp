@@ -9,14 +9,6 @@ if(sizeof($_SESSION[configuracion])==0)
 		$_SESSION[configuracion][$reg[constante]]=$reg[valor];
 	}
 	
-	$f = "c:\\xampp\\htdocs\\scp\\partes\\version.txt";
-	$fp = fopen($f, "r");
-	$version = trim(fread($fp, filesize($f)));
-
-	
-	$_SESSION[configuracion][VERSION]=$version;
-	
-	
 	
 	error_log("sesión conf:" . implode("--",array_keys($_SESSION[configuracion])));
 	error_log("sesión conf:" . implode("--",$_SESSION[configuracion]));
@@ -29,6 +21,18 @@ function ejecutar_sql($sql)
 
 	$con = mysql_connect(SERVIDOR_BD,USUARIO_BD,CLAVE_BD);
 	mysql_select_db(NOMBRE_BD);
+	$res = mysql_query($sql,$con);
+	mysql_close($con);
+	
+	return $res;
+}
+
+function ejecutar_sql2($sql)
+{
+	error_log("ejecutar_sql > ".$sql);
+
+	$con = mysql_connect(SERVIDOR_BD2,USUARIO_BD2,CLAVE_BD2);
+	mysql_select_db(NOMBRE_BD2);
 	$res = mysql_query($sql,$con);
 	mysql_close($con);
 	

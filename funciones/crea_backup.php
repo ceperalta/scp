@@ -1,20 +1,25 @@
 <?
 include("../configuracion/configuracion.php");
 include("../funciones/funciones.php");
-
-
-
-	$hora_menos_uno = date('H');
-	$minutos = date('i');
-	$segundos = date('s');
-	$fecha_hora = date('j-n-y_').$hora_menos_uno.":".$minutos.":".$segundos."hs";
+error_log("pum crea !!!");
+	$fecha_hora = date('j-n-Y__').time();
 	$fecha_hora = str_replace(":","-",$fecha_hora);
+	
 
-$nombre_backup = "scp_v".$version."_".$fecha_hora;
+$nombre_backup = "scp_v".$_SESSION[configuracion][VERSION]."_".$fecha_hora;
+
+    ejecutar_sql("delete from realizados");
+	$sql = "insert into realizados (id,realizado) values (1,'".$nombre_backup.".zip')";
+	error_log($sql);
+	ejecutar_sql($sql);
+
 
 $path_y_nombre_sql = $_SESSION[configuracion][PATH_BASE_FS]."\\temporal\\".$nombre_backup.".sql";
 
 $cmd = $_SESSION[configuracion][PATH_BASE_BIN_MYSQL]."\\mysqldump.exe ".NOMBRE_BD." --user=".USUARIO_BD." -p".CLAVE_BD." > " . $path_y_nombre_sql;
+
+error_log($cmd);
+
 exec($cmd);
 
 		
@@ -28,7 +33,6 @@ if ($zip->open($filename, ZIPARCHIVE::CREATE)!==TRUE) {
 $zip->addFile($path_y_nombre_sql,"datos_y_estructura.sql");
 $zip->close();
 
-		
 unlink($path_y_nombre_sql);
 
 if(!file_exists($_SESSION[configuracion][CARPETA_DE_BACKUP]))
@@ -36,9 +40,8 @@ if(!file_exists($_SESSION[configuracion][CARPETA_DE_BACKUP]))
 
 copy($filename,$_SESSION[configuracion][CARPETA_DE_BACKUP]."\\".$nombre_backup.".zip");
 unlink($filename);
-
-	$sql = "update backup_log set realizado='".$nombre_backup.".zip' where id=1";
-	ejecutar_sql($sql);
+	
+	
 
 echo $nombre_backup.".zip";
 ?>
