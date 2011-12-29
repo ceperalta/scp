@@ -40,9 +40,9 @@ else
 </script>
 
 <? if($_GET[s]=="Proveedores")
-	echo '<li><b><span style="color:red">Proveedores</span></b></li><br/>';
+	echo '<li><b><span style="color:red">Proveedores/Productos</span></b></li><br/>';
 else 
-	echo '<li><a href="#" onClick="cargaProveedores();">Proveedores</a></li><br/>';
+	echo '<li><a href="#" onClick="cargaProveedores();">Proveedores/Productos</a></li><br/>';
 ?>
 
 <script language="javascript">
@@ -127,3 +127,23 @@ else
 else 
 	echo '<li><a href="javascript:cargaBackup();">Backup</a></li>';
 ?>
+
+
+<br />
+
+<script language="javascript">
+	function cargaActualizar()
+	{
+		parent.document.getElementById('listado_detalle').rows = '100%,0%';
+		parent.listado.location.href = "listados/actualizar.php";
+		parent.opciones.location.href = "opciones/actualizar.php";
+		parent.detalle.location.href = "detalles/actualizar.php?s=vacio";
+		parent.menu.location.href = "menu.php?s=Actualizar";
+	}
+</script>
+<? if($_GET[s]=="Actualizar")
+	echo '<li><b><span style="color:red">Actualizar</span></b></li>';
+else 
+	echo '<li><a href="javascript:cargaActualizar();">Actualizar</a></li>';
+?>
+
