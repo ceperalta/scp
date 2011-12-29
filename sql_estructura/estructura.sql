@@ -4,10 +4,20 @@ Source Host: localhost
 Source Database: scp
 Target Host: localhost
 Target Database: scp
-Date: 12/28/2011 7:55:26 PM
+Date: 12/28/2011 10:23:49 PM
 */
 
 SET FOREIGN_KEY_CHECKS=0;
+-- ----------------------------
+-- Table structure for actualizaciones
+-- ----------------------------
+CREATE TABLE `actualizaciones` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `fecha` timestamp NULL DEFAULT NULL,
+  `commit` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+
 -- ----------------------------
 -- Table structure for backup_log
 -- ----------------------------
@@ -69,7 +79,7 @@ CREATE TABLE `configuracion` (
   `valor` text,
   `id` int(11) NOT NULL AUTO_INCREMENT,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=17 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=18 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Table structure for cta
@@ -359,3 +369,4 @@ INSERT INTO `configuracion` VALUES ('IVA', '21', '13');
 INSERT INTO `configuracion` VALUES ('PATH_BASE_FS', 'c:\\\\xampp\\\\htdocs\\\\scp', '14');
 INSERT INTO `configuracion` VALUES ('PATH_BASE_BIN_MYSQL', 'C:\\\\xampp\\\\mysql\\\\bin', '15');
 INSERT INTO `configuracion` VALUES ('CARPETA_DE_BACKUP', 'C:\\\\Users\\\\martin\\\\Desktop', '16');
+INSERT INTO `configuracion` VALUES ('GIT_EXE_PATH', 'c:\\\\Program Files\\\\Git\\\\bin\\\\git.exe', '17');
