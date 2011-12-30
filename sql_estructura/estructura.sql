@@ -1,32 +1,68 @@
-/*
-MySQL Data Transfer
-Source Host: localhost
-Source Database: scp
-Target Host: localhost
-Target Database: scp
-Date: 12/28/2011 7:55:26 PM
-*/
+-- MySQL dump 10.13  Distrib 5.5.16, for Win32 (x86)
+--
+-- Host: localhost    Database: scp
+-- ------------------------------------------------------
+-- Server version	5.5.16
 
-SET FOREIGN_KEY_CHECKS=0;
--- ----------------------------
--- Table structure for backup_log
--- ----------------------------
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Table structure for table `actualizaciones`
+--
+
+DROP TABLE IF EXISTS `actualizaciones`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `actualizaciones` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `fecha` timestamp NULL DEFAULT NULL,
+  `commit` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `backup_log`
+--
+
+DROP TABLE IF EXISTS `backup_log`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `backup_log` (
   `realizado` varchar(255) DEFAULT NULL,
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- ----------------------------
--- Table structure for cl_imp
--- ----------------------------
+--
+-- Table structure for table `cl_imp`
+--
+
+DROP TABLE IF EXISTS `cl_imp`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `cl_imp` (
   `CODCLI` varchar(4) DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- ----------------------------
--- Table structure for clientes
--- ----------------------------
+--
+-- Table structure for table `clientes`
+--
+
+DROP TABLE IF EXISTS `clientes`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `clientes` (
   `CODCLI` varchar(4) NOT NULL DEFAULT '',
   `CLIENTE` varchar(200) DEFAULT NULL,
@@ -60,20 +96,30 @@ CREATE TABLE `clientes` (
   FULLTEXT KEY `titular` (`TITULAR`),
   FULLTEXT KEY `supermer` (`SUPERMER`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- ----------------------------
--- Table structure for configuracion
--- ----------------------------
+--
+-- Table structure for table `configuracion`
+--
+
+DROP TABLE IF EXISTS `configuracion`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `configuracion` (
   `constante` varchar(255) DEFAULT NULL,
   `valor` text,
   `id` int(11) NOT NULL AUTO_INCREMENT,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=17 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=18 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- ----------------------------
--- Table structure for cta
--- ----------------------------
+--
+-- Table structure for table `cta`
+--
+
+DROP TABLE IF EXISTS `cta`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `cta` (
   `OPERACION` int(11) DEFAULT NULL,
   `CODCLI` varchar(4) DEFAULT NULL,
@@ -87,10 +133,15 @@ CREATE TABLE `cta` (
   `CLAVE` varchar(1) DEFAULT NULL,
   `SALDO` double DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- ----------------------------
--- Table structure for ctasclie
--- ----------------------------
+--
+-- Table structure for table `ctasclie`
+--
+
+DROP TABLE IF EXISTS `ctasclie`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `ctasclie` (
   `OPERACION` int(11) DEFAULT NULL,
   `CODCLI` varchar(4) DEFAULT NULL,
@@ -104,10 +155,15 @@ CREATE TABLE `ctasclie` (
   `CLAVE` varchar(1) DEFAULT NULL,
   `SALDO` double DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- ----------------------------
--- Table structure for facturas
--- ----------------------------
+--
+-- Table structure for table `facturas`
+--
+
+DROP TABLE IF EXISTS `facturas`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `facturas` (
   `OPERACION` int(11) DEFAULT NULL,
   `CODCLI` varchar(4) DEFAULT NULL,
@@ -127,10 +183,15 @@ CREATE TABLE `facturas` (
   `DEBE` double DEFAULT NULL,
   `RETENCION` double DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- ----------------------------
--- Table structure for l2
--- ----------------------------
+--
+-- Table structure for table `l2`
+--
+
+DROP TABLE IF EXISTS `l2`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `l2` (
   `CODPRO` varchar(4) DEFAULT NULL,
   `TITULO` varchar(40) DEFAULT NULL,
@@ -140,10 +201,15 @@ CREATE TABLE `l2` (
   `IMPUESTO` double DEFAULT NULL,
   `DESCUENTO` double DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- ----------------------------
--- Table structure for li
--- ----------------------------
+--
+-- Table structure for table `li`
+--
+
+DROP TABLE IF EXISTS `li`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `li` (
   `CODPRO` varchar(4) DEFAULT NULL,
   `TITULO` varchar(40) DEFAULT NULL,
@@ -153,10 +219,15 @@ CREATE TABLE `li` (
   `IMPUESTO` double DEFAULT NULL,
   `DESCUENTO` double DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- ----------------------------
--- Table structure for list_pro
--- ----------------------------
+--
+-- Table structure for table `list_pro`
+--
+
+DROP TABLE IF EXISTS `list_pro`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `list_pro` (
   `CODIGO` varchar(4) DEFAULT NULL,
   `PRODUCTO` varchar(20) DEFAULT NULL,
@@ -164,10 +235,15 @@ CREATE TABLE `list_pro` (
   `CARACTERES` varchar(25) DEFAULT NULL,
   `PRECIO` varchar(8) DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- ----------------------------
--- Table structure for listpre0
--- ----------------------------
+--
+-- Table structure for table `listpre0`
+--
+
+DROP TABLE IF EXISTS `listpre0`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `listpre0` (
   `TITULO` varchar(40) DEFAULT NULL,
   `CODPRO` varchar(4) DEFAULT NULL,
@@ -177,10 +253,15 @@ CREATE TABLE `listpre0` (
   `RESUM1` varchar(50) DEFAULT NULL,
   `RESUM2` varchar(50) DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- ----------------------------
--- Table structure for listpre1
--- ----------------------------
+--
+-- Table structure for table `listpre1`
+--
+
+DROP TABLE IF EXISTS `listpre1`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `listpre1` (
   `idahora` int(11) NOT NULL AUTO_INCREMENT,
   `CODPRO` varchar(4) NOT NULL DEFAULT '',
@@ -192,10 +273,15 @@ CREATE TABLE `listpre1` (
   `DESCUENTO` double DEFAULT NULL,
   PRIMARY KEY (`idahora`)
 ) ENGINE=MyISAM AUTO_INCREMENT=11009 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- ----------------------------
--- Table structure for p1
--- ----------------------------
+--
+-- Table structure for table `p1`
+--
+
+DROP TABLE IF EXISTS `p1`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `p1` (
   `OPERACION` int(11) DEFAULT NULL,
   `CODCLI` varchar(4) DEFAULT NULL,
@@ -207,10 +293,15 @@ CREATE TABLE `p1` (
   `FLETE` varchar(40) DEFAULT NULL,
   `FECHAFL` date DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- ----------------------------
--- Table structure for pedi002
--- ----------------------------
+--
+-- Table structure for table `pedi002`
+--
+
+DROP TABLE IF EXISTS `pedi002`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `pedi002` (
   `OPERACION` int(11) DEFAULT NULL,
   `FECHA` date DEFAULT NULL,
@@ -222,10 +313,15 @@ CREATE TABLE `pedi002` (
   `IMPORTE` double DEFAULT NULL,
   `UNITARIO` double DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- ----------------------------
--- Table structure for pedi002_tmp
--- ----------------------------
+--
+-- Table structure for table `pedi002_tmp`
+--
+
+DROP TABLE IF EXISTS `pedi002_tmp`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `pedi002_tmp` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `OPERACION` int(11) NOT NULL DEFAULT '0',
@@ -240,10 +336,15 @@ CREATE TABLE `pedi002_tmp` (
   `DESCUENTO` double DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- ----------------------------
--- Table structure for pediuno
--- ----------------------------
+--
+-- Table structure for table `pediuno`
+--
+
+DROP TABLE IF EXISTS `pediuno`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `pediuno` (
   `OPERACION` int(11) NOT NULL AUTO_INCREMENT,
   `CODCLI` varchar(4) DEFAULT NULL,
@@ -257,17 +358,27 @@ CREATE TABLE `pediuno` (
   `notas` text,
   PRIMARY KEY (`OPERACION`)
 ) ENGINE=MyISAM AUTO_INCREMENT=10001 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- ----------------------------
--- Table structure for prod_gs
--- ----------------------------
+--
+-- Table structure for table `prod_gs`
+--
+
+DROP TABLE IF EXISTS `prod_gs`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `prod_gs` (
   `PROD_G` varchar(22) DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- ----------------------------
--- Table structure for proveedores
--- ----------------------------
+--
+-- Table structure for table `proveedores`
+--
+
+DROP TABLE IF EXISTS `proveedores`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `proveedores` (
   `CODPRO` varchar(4) CHARACTER SET latin1 NOT NULL DEFAULT '',
   `PROVEEDOR` varchar(200) CHARACTER SET latin1 DEFAULT NULL,
@@ -299,28 +410,43 @@ CREATE TABLE `proveedores` (
   PRIMARY KEY (`CODPRO`),
   FULLTEXT KEY `codpro` (`CODPRO`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- ----------------------------
--- Table structure for realizados
--- ----------------------------
+--
+-- Table structure for table `realizados`
+--
+
+DROP TABLE IF EXISTS `realizados`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `realizados` (
   `realizado` varchar(255) DEFAULT NULL,
   `id` bigint(20) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- ----------------------------
--- Table structure for restaurados
--- ----------------------------
+--
+-- Table structure for table `restaurados`
+--
+
+DROP TABLE IF EXISTS `restaurados`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `restaurados` (
   `id` tinyint(4) NOT NULL DEFAULT '0',
   `restaurado` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- ----------------------------
--- Table structure for setup
--- ----------------------------
+--
+-- Table structure for table `setup`
+--
+
+DROP TABLE IF EXISTS `setup`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `setup` (
   `UNO` int(11) DEFAULT NULL,
   `DOS` int(11) DEFAULT NULL,
@@ -341,21 +467,28 @@ CREATE TABLE `setup` (
   `TIT8` varchar(70) DEFAULT NULL,
   `TIT9` varchar(70) DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- ----------------------------
--- Table structure for valores
--- ----------------------------
+--
+-- Table structure for table `valores`
+--
+
+DROP TABLE IF EXISTS `valores`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `valores` (
   `IVA` double DEFAULT NULL,
   `MEDIOIVA` double DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
--- ----------------------------
--- Records 
--- ----------------------------
-INSERT INTO `configuracion` VALUES ('VERSION', '0.8', '11');
-INSERT INTO `configuracion` VALUES ('TAMANIO_PAGINA_OPERACIONES', '50', '12');
-INSERT INTO `configuracion` VALUES ('IVA', '21', '13');
-INSERT INTO `configuracion` VALUES ('PATH_BASE_FS', 'c:\\\\xampp\\\\htdocs\\\\scp', '14');
-INSERT INTO `configuracion` VALUES ('PATH_BASE_BIN_MYSQL', 'C:\\\\xampp\\\\mysql\\\\bin', '15');
-INSERT INTO `configuracion` VALUES ('CARPETA_DE_BACKUP', 'C:\\\\Users\\\\martin\\\\Desktop', '16');
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2011-12-30 20:19:20

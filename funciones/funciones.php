@@ -1,6 +1,6 @@
-<?
+<? 
 //Carga configuración
-if(sizeof($_SESSION[configuracion])==0)
+if(sizeof($_SESSION[configuracion])==0 || $_SESSION[configuracion][recargar]=="s")
 {
 	$res = ejecutar_sql("select * from configuracion");
 	while($reg = mysql_fetch_array($res))
@@ -9,6 +9,7 @@ if(sizeof($_SESSION[configuracion])==0)
 		$_SESSION[configuracion][$reg[constante]]=$reg[valor];
 	}
 	
+	$_SESSION[configuracion][recargar]="n";
 	
 	error_log("sesión conf:" . implode("--",array_keys($_SESSION[configuracion])));
 	error_log("sesión conf:" . implode("--",$_SESSION[configuracion]));
