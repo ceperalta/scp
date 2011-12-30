@@ -34,12 +34,11 @@
 				$("#cargador").show();	
 				$.post("../../funciones/actualizar.php", {a:1},
 			  		function(data){
-					 	$("#cargador").hide();	
-						$("#txt_aviso").text("Actualizado. Recargue la página completa por favor (F5 o desde la barra). (feedback: " + data + ")");
-						
-						
-						
-						
+						$.post("../../funciones/actualizar_sql.php", {vuelve_git:data},
+							function(data){
+								$("#cargador").hide();	
+								$("#txt_aviso").text("Actualizado. Recargue la página completa por favor (F5 o desde la barra). (Nota del cambio: " + data + ")");
+						});
  		      	});			
 			</script>
 		
