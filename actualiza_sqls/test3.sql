@@ -1,1 +1,1 @@
-update configuracion set valor="0.8.9 ja2" where constante='VERSION';
+update configuracion set valor="0.8.9 vamo" where constante='VERSION';
