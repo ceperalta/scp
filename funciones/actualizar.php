@@ -2,7 +2,7 @@
 include("../configuracion/configuracion.php");
 include("../funciones/funciones.php");
 
-exec("cd ".$_SESSION[configuracion][PATH_BASE_FS]." && \"".$_SESSION[configuracion][GIT_EXE_PATH]."\" pull origin desarrollo",$a);
+exec("cd ".$_SESSION[configuracion][PATH_BASE_FS]." && \"".$_SESSION[configuracion][GIT_EXE_PATH]."\" pull origin ".RAMA_GIT,$a);
 
 exec("cd ".$_SESSION[configuracion][PATH_BASE_FS]." && \"".$_SESSION[configuracion][GIT_EXE_PATH]."\" log -1 --pretty=oneline",$a);
 
