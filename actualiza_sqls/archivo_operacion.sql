@@ -1,0 +1,1 @@
+update configuracion set valor="0.9.1" where constante='VERSION';
