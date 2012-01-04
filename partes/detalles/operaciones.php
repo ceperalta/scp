@@ -24,7 +24,7 @@
 	
 	$salida = "";
 	
-	$salida .= "Nro. de operación: ".$_GET[op]."\n
+	$salida .= "Nro. de operación: ".$_GET[op]."\r\n
 ===================================================================
 Comprador: ".$reg[cliente]."
 Nro. de pedido del comprador: 
@@ -34,7 +34,7 @@ Vigencia de la lista de precios: ".$fecha_vig_lista."
 Fecha de posible entrega: ".$fecha_posible_entrega."
 Lugar de entrega: ".$reg[direcc_t]."
 Notas: ".$reg[notas_listas]."
-=================================================================== \n\n
+=================================================================== \r\n\r\n
 ";
 
 
@@ -44,25 +44,41 @@ Notas: ".$reg[notas_listas]."
 	
 	while($reg = mysql_fetch_array($res))
 	{
-		$salida .= "Producto: ".$reg["DETALLE"]."\n===================================================================\n";
-		$salida .= "(1) Cantidad:".$reg["CANTIDAD"]."\n";
-		$salida .= "(2) Empaque:".$reg["ENPAQUE"]."\n";
-		$salida .= "(3) Costo: $".str_replace(".",",",$reg["UNITARIO"])."\n";
-		$salida .= "(4) Importe (1) x (2) x (3) = $".str_replace(".",",",$reg["IMPORTE"])."\n";
-		$salida .= "\n";
+		$salida .= "Producto: ".$reg["DETALLE"]."\r\n===================================================================\r\n";
+		$salida .= "(1) Cantidad:".$reg["CANTIDAD"]."\r\n";
+		$salida .= "(2) Empaque:".$reg["ENPAQUE"]."\r\n";
+		$salida .= "(3) Costo: $".str_replace(".",",",$reg["UNITARIO"])."\r\n";
+		$salida .= "(4) Importe (1) x (2) x (3) = $".str_replace(".",",",$reg["IMPORTE"])."\r\n";
+		$salida .= "\r\n";
 		$sum_importes += $reg["IMPORTE"];
 		$sum_bultos += $reg["CANTIDAD"];
 	}
 
-	$salida .= "\n===================================================================\n";
-	$salida .= "(a) Subtotal - Sumatoria de importes = $".str_replace(".",",",$sum_importes)."\n";
+	$salida .= "\n===================================================================\r\n";
+	$salida .= "(a) Subtotal - Sumatoria de importes = $".str_replace(".",",",$sum_importes)."\r\n";
 	$iva = ($sum_importes * $_SESSION[configuracion][IVA])/100;
-	$salida .= ">> IVA 21% sobre (a) = $".str_replace(".",",",$iva)."\n";
-	$salida .= ">> Total a pagar - Sumatoria items anteriores = $".str_replace(".",",",$iva+$sum_importes)."\n";
-	$salida .= ">> Total de bultos - Sumatoria de (1) = ".str_replace(".",",",$sum_bultos)."\n";
-	$salida .= "===================================================================\n";
+	$salida .= ">> IVA 21% sobre (a) = $".str_replace(".",",",$iva)."\r\n";
+	$salida .= ">> Total a pagar - Sumatoria items anteriores = $".str_replace(".",",",$iva+$sum_importes)."\r\n";
+	$salida .= ">> Total de bultos - Sumatoria de (1) = ".str_replace(".",",",$sum_bultos)."\r\n";
+	$salida .= "===================================================================\r\n";
 	
-	echo "<center><input type='button' value='Seleccionar todo' onClick='javascript:elform.informe_oper.select();'> (Ctrl+c copia - Ctrl+v pega)</center><br/>";
+	
+	foreach (glob($_SESSION[configuracion][PATH_BASE_FS]."\\temporal\\op-*.txt") as $filename) 
+		unlink($filename);
+	
+	$myFile = $_SESSION[configuracion][PATH_BASE_FS]."\\temporal\\op-".$_GET[op].".txt";
+	$fh = fopen($myFile, 'w') or die("can't open file");
+	fwrite($fh, $salida);
+	fclose($fh);
+	
+	
+
+	$aP = explode("/",$_SERVER[PHP_SELF]);
+	$url_base = "http://".$_SERVER['SERVER_NAME']."/".$aP[1]."/";
+
+	
+	
+	echo "<center>Clic derecho, Guardar enlace como: <a href='".$url_base."temporal/op-".$_GET[op].".txt'>op-".$_GET[op].".txt<a> | <input type='button' value='Seleccionar todo' onClick='javascript:elform.informe_oper.select();'> (Ctrl+c copia - Ctrl+v pega)</center><br/>";
 	
 	echo '<center><form id="elform"><input type="hidden" value="'.$_GET[op].'" id="idoper"><textarea id="informe_oper" cols="80" rows="15">'.$salida.'</textarea></form></center>';	
 	
