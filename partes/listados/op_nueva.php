@@ -99,9 +99,24 @@ $.datepick.setDefaults($.datepick.regional['es']);
 
 
 <?
+	
+	if(isset($reg[iva]))
+		$iva = $reg[iva];
+	else
+		$iva = $_SESSION[configuracion][IVA];
+		
+	if(isset($reg[impuesto_interno]))
+		$impuesto_interno = $reg[impuesto_interno];
+	else
+		$impuesto_interno = 0;
+	
 	echo "<tr><td>Proveedor</td><td><input type='text' id='proveedor' size='100'  value='".$proveedor_listo."'></td></tr>";
 	echo "<tr><td>Flete</td><td><input type='text' name='flete' id='flete' size='70' maxlength='254'  value='".$reg[FLETE]."'>
-	&nbsp;&nbsp; Fecha <input type='text' size='10' maxlength='10' id='fechaflete' name='fechaflete' value='".$fechafl_lista."'/></td></tr>
+	&nbsp; Fecha flete <input type='text' size='10' maxlength='10' id='fechaflete' name='fechaflete' value='".$fechafl_lista."'/></td></tr>
+	<tr><td>IVA</td><td><input type='text' name='iva' id='iva' size='2' value='{$iva}'/>&nbsp;&nbsp;Impuesto interno&nbsp;<input type='text' name='impuesto_interno' id='impuesto_interno' size='2' value='{$impuesto_interno}'/>
+	Nro. de pedido de cliente&nbsp;<input type='text' name='nro_pedido_cliente' id='nro_pedido_cliente' size='2' value='{$reg[nro_pedido_cliente]}'/>
+	</td></tr>
+	<tr><td>Lugar de entrega</td><td><textarea id='lugar_entrega' name='lugar_entrega' cols='77'>".$reg[lugar_entrega]."</textarea></td></tr>
 	<tr><td>Notas</td><td><textarea id='notas' name='notas' cols='77'>".$reg[notas]."</textarea></td></tr>
 	";
 ?>
